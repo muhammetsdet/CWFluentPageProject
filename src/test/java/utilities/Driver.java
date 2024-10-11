@@ -1,15 +1,20 @@
 package utilities;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+
 public class Driver {
 
     protected static WebDriver driver;
-private Driver() {}//new keyword'ü ile başka class'lardan bu class'ın bir objesinin oluştutulmasının önüne geçer.
+
+    private Driver() {
+    }//new keyword'ü ile başka class'lardan bu class'ın bir objesinin oluştutulmasının önüne geçer.
+
     public static WebDriver getDriver() {
 
-        if (driver==null){//Eğer driver null(oluşturulmamış)  ise yeni driver oluştur.
+        if (driver == null) {//Eğer driver null(oluşturulmamış)  ise yeni driver oluştur.
             driver = new ChromeDriver();
         }
 
@@ -20,7 +25,7 @@ private Driver() {}//new keyword'ü ile başka class'lardan bu class'ın bir obj
     }
 
 
-    public static void closeDriver(){
+    public static void closeDriver() {
 
         try {
             Thread.sleep(3000);
@@ -28,9 +33,9 @@ private Driver() {}//new keyword'ü ile başka class'lardan bu class'ın bir obj
             throw new RuntimeException(e);
         }
 
-        if (driver!=null){//Eğer driver null değil(oluşturulmuş) ise quit() metodunu kullan.
+        if (driver != null) {//Eğer driver null değil(oluşturulmuş) ise quit() metodunu kullan.
             driver.quit();
-            driver=null;//quit() işlemi sonrası getDriver() methodunun tekrar çalışabilmesi için gerekli.
+            driver = null;//quit() işlemi sonrası getDriver() methodunun tekrar çalışabilmesi için gerekli.
         }
 
     }
